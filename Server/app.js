@@ -9,5 +9,5 @@ var server = http.createServer(function (request, response) {
 
 // Listen on port 80, IP defaults to 0.0.0.0
 server.listen(80, '0.0.0.0', function() {
-	console.log("Server running at http://0.0.0.0:8910/");
+	console.log("Server running at http://0.0.0.0:80/");
 });
