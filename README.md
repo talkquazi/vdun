@@ -16,7 +16,7 @@ vagrant up --provider="docker"
 You can check that your server is running with:
 
 ```bash
-curl http://localhost:8910
+curl http://localhost:80
 ```
 
 # Explanation
@@ -47,3 +47,11 @@ docker ...
 
 ### Server/app.js
 This is the super simple Node.js server. You would replace this with your own code. This test server code responds to everything with 'Hello World'. Defaults to '0.0.0.0' (Generally this is required due to dockers internal mechanics).
+
+# Notes
+
+This setup is designed to run using either vagrant or docker. As such it can deploy on hosting solutions that support either vagrant or docker.
+
+# Notice
+
+This setup runs your nodejs script as root. This is not ideal in a production setup.
