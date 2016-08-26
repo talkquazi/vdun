@@ -1,0 +1,22 @@
+{
+  "name": "vdun",
+  "version": "1.0.0",
+  "description": "Vagrant Docker Ubuntu Nvm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vagrant",
+    "docker",
+    "ubuntu",
+    "nvm",
+    "provision",
+    "server",
+    "host",
+    "dev",
+    "box"
+  ],
+  "author": "Active 9 LLC.",
+  "license": "MIT"
+}
