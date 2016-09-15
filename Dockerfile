@@ -14,6 +14,9 @@ RUN mkdir $PROJ_DIR
 ADD Server/app.js $PROJ_DIR/Server/app.js
 ADD Server/package.json $PROJ_DIR/Server/package.json
 
+# Expose Port 8080
+EXPOSE 8080
+
 # This is not 'best practice'
 RUN apt-get update
 RUN apt-get install -y python-software-properties screen build-essential libssl-dev curl python git-core
@@ -25,8 +28,13 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | b
     /bin/bash -l -c "nvm install;" \
 "nvm use;"
 
-ADD project.sh /project.sh
+# App To Run
+ENV APP_PATH /var/www/Server
+ENV APP_MAIN /var/www/Server/app.js
 
-EXPOSE 80
-
-CMD ["/bin/bash", "/project.sh"]
+# Launch PM2
+CMD . $NVM_DIR/nvm.sh; \
+  npm install -g Unitech/pm2#development && \
+  cd $APP_PATH && \
+  npm install && \
+  NODE_ENV=development pm2-docker start $APP_MAIN --auto-exit;

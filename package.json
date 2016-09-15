@@ -1,6 +1,6 @@
 {
   "name": "vdun",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Vagrant Docker Ubuntu Nvm",
   "main": "index.js",
   "scripts": {
