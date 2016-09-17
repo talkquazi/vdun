@@ -66,7 +66,7 @@ This setup is designed to run using either vagrant or docker. As such it can dep
 
 Installing both docker and vagrant on the host machine will speed up the initial vagrant bootup as the system will not have to run a virtual instance and install docker for you then. This is the ideal method to have both vagrant and docker installed on a host machine if you are distributing on a cloud.
 
-Modifying onExit.sh is the easiest way to configure your own shutdown detection with this setup.
+Modifying onProvisioned.sh is the easiest way to configure your own on provision completion detection with this setup.
 
 You can change which version of node to use by editing the .nvmrc file within the projects main folder.
 

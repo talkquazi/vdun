@@ -13,6 +13,7 @@ ENV PATH $NVM_DIR/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b
 RUN mkdir $PROJ_DIR
 ADD Server/app.js $PROJ_DIR/Server/app.js
 ADD Server/package.json $PROJ_DIR/Server/package.json
+ADD onProvisioned.sh /onProvisioned.sh
 
 # Expose Port 8080
 EXPOSE 8080
@@ -38,3 +39,6 @@ CMD . $NVM_DIR/nvm.sh; \
   cd $APP_PATH && \
   npm install && \
   NODE_ENV=development pm2-docker start $APP_MAIN --auto-exit;
+
+# Trigger Upon Privisioned
+RUN . /onProvisioned.sh
