@@ -11,6 +11,7 @@ ENV PATH $NVM_DIR/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b
 
 # Your NodeJS Project Files
 RUN mkdir $PROJ_DIR
+ADD process.json $PROJ_DIR/process.json
 ADD Server/app.js $PROJ_DIR/Server/app.js
 ADD Server/package.json $PROJ_DIR/Server/package.json
 ADD onProvisioned.sh /onProvisioned.sh
@@ -31,14 +32,15 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | b
 
 # App To Run
 ENV APP_PATH /var/www/Server
-ENV APP_MAIN /var/www/Server/app.js
+ENV APP_MAIN /var/www/process.json
 
 # Launch PM2
 CMD . $NVM_DIR/nvm.sh; \
   npm install -g Unitech/pm2#development && \
   cd $APP_PATH && \
   npm install && \
-  NODE_ENV=development pm2-docker start $APP_MAIN --auto-exit;
+  cd .. && \
+  pm2-docker start $APP_MAIN --auto-exit;
 
 # Trigger Upon Privisioned
 RUN . /onProvisioned.sh

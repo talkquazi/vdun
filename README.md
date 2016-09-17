@@ -43,6 +43,10 @@ git clone https://github.com/talkquazi/vdun
 
 *Notice: There is currently no module entry point method to spin-up vdun using a nodejs module. npm install is not needed either. The above install methods are simply to clone the source code.
 
+# Configuring
+
+This project comes preconfigured using node version 0.12.7. You can modify the .nvmrc file to change the version of NodeJS that gets installed. Modify Dockerfile to include your own script files. You will also need to edit process.json to configure it your project.
+
 # Advanced Usage
 
 Build the para-container with:
@@ -69,6 +73,8 @@ Installing both docker and vagrant on the host machine will speed up the initial
 Modifying onProvisioned.sh is the easiest way to configure your own on provision completion detection with this setup.
 
 You can change which version of node to use by editing the .nvmrc file within the projects main folder.
+
+A beta version of pm2 version 2.0 is being used for the command pm2-docker this command is still in beta.
 
 # Notice
 
